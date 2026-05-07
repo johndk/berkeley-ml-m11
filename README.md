@@ -1,12 +1,9 @@
-**ATTENTION: Note to reviewer. This submission is in-progress. I am requesting a six-hour extension. 
-Estimated completion time 3:30 PM PDT Thursday, May 7, 2026.**
-
 ## Overview
 
 This project analyzes a cleaned dataset of used vehicle listings originally sourced from Kaggle. The goal is to 
 identify which vehicle characteristics are most associated with higher or lower used car prices.
 
-## Business Problem
+## Business Understanding
 
 Used car dealers need to decide which vehicles to acquire, promote, and price competitively. This analysis 
 investigates the relationship between vehicle price and features such as age, mileage, make, model, condition, 
@@ -40,7 +37,7 @@ The major stages include:
 7. Evaluation
 8. Business recommendations
 
-## Data Cleaning Summary
+## Data Cleaning and Preparation
 
 Extensive data cleaning was performed on the [vehicles.csv](./data/vehicles.csv) dataset. The cleaned dataset 
 is in [cars.csv](./data/cars.csv) and the cleaning steps were implemented in the notebook [clean.ipynb](./clean.ipynb).
@@ -157,3 +154,55 @@ The `age` feature was introduced to make car depreciation easier to analyze and 
 generally decline as cars get older, age provides a direct measure of this effect. It is also more intuitive 
 for a dealership audience than the raw model year because inventory decisions are often discussed in terms of 
 how many years old a car is.
+
+## EDA and Visualization
+
+The visualization are in the eda*.ipynb files. The plots are well documented in those files and will not be
+summarized here. Intuitively the plots indicate age, milage, make, and model are strong predictors of price. 
+The relationships between age and price, and milage and price, are somewhat linear but not quite, suggesting 
+polynomial features which is confirmed by the machine learning experiments. Price distribution plots indicate
+that log transformed price mitigates skewing. 
+
+## Modeling
+
+The simple linear regression experiments in [linereg.ipynb](linereg.ipynb) did not produce very good results but do indicate that polynomial feature 
+modeling of age and odometer improved results.
+
+Ridge regression models in [ridge.ipynp](ridge.ipynb) cover
+
+- Polynomial numeric features with one-hot categorical features and cross validation
+  - Both price and log transformed price were modeled
+- Polynomial numeric features with one-hot categorical features and grid search
+  - Log transformed price only
+
+Cross validation with numeric polynomial feature selection on [age,odometer], and one-hot categorical 
+features [make,model], with log transformed price, was representative of the best results which are show below
+
+```
+cv_mae     3467.217503
+cv_rmse    5501.244025
+cv_r2         0.821704
+dtype: float64
+test_mae     3458.711440
+test_rmse    5501.787543
+test_r2         0.821980
+dtype: float64
+              y_test    ridge_preds
+mean    19318.045232   18783.557334
+std     13039.824946   12827.083717
+median  16591.000000   15515.574322
+min      1000.000000    1039.250963
+max     65500.000000  100224.962135
+```
+
+Variant experients with additional categorical features and grid search did not produce significantly 
+better results. The car model feature had a significant impact; the extensive data cleaning steps paid off.
+
+## Business recommendations
+
+Based on the dataset used for this project, car age, milage, make, and model are very good predictors of car price.
+
+
+
+
+
