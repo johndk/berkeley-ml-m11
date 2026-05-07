@@ -157,11 +157,18 @@ how many years old a car is.
 
 ## EDA and Visualization
 
-The visualization are in the eda*.ipynb files. The plots are well documented in those files and will not be
+The visualization are in the EDA notebooks. The plots are well documented in those files and will not be
 summarized here. Intuitively the plots indicate age, milage, make, and model are strong predictors of price. 
 The relationships between age and price, and milage and price, are somewhat linear but not quite, suggesting 
 polynomial features which is confirmed by the machine learning experiments. Price distribution plots indicate
 that log transformed price mitigates skewing. 
+
+[eda.ipynb](eda.ipynb)<br>
+[eda_chevrolet.ipynb](eda_chevrolet.ipynb)<br>
+[eda_ford.ipynb](eda_ford.ipynb)<br>
+[eda_honda.ipynb](eda_honda.ipynb)<br>
+[eda_nissan.ipynb](eda_nissan.ipynb)<br>
+[eda_toyota.ipynb](eda_toyota.ipynb)<br>
 
 ## Modeling
 
