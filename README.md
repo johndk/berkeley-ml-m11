@@ -39,7 +39,7 @@ The major stages include:
 ## Data Cleaning and Preparation
 
 Extensive data cleaning was performed on the Kaggle [vehicles.csv](./data/vehicles.csv) dataset. The cleaned dataset 
-is [cars.csv](./data/cars.csv). The cleaning steps was implemented in the notebook [clean.ipynb](./clean.ipynb).
+is [cars.csv](./data/cars.csv). The cleaning steps were implemented in the notebook [clean.ipynb](./clean.ipynb).
 
 Major cleaning steps included:
 
@@ -106,13 +106,11 @@ The car model strings in the Kaggle dataset were not standardized. Many entries 
 conventions, contained ambiguous descriptions, or included unnecessary extra information, making the original 
 model column difficult to interpret reliably.
 
-Generative AI tools were used to map the original model strings to consistent car model labels. In some 
+Generative AI tools were used to map the original model strings to consistent car model labels, see [normalized_models.py](normalize_models.py). In some 
 cases, the model strings also contained manufacturer names, which were used to fill in missing manufacturer 
 values when possible. The standardized vehicle manufacturer and model names were stored in the new make 
 and model columns. This process also removed unusable model strings.
 
-The original model strings to consistent car model labels implementation (AI generated) is in 
-[normalized_models.py](normalize_models.py).
 
 Rows removed by make and model discovery filters: 2,003<br>
 Percentage removed: 0.5%
@@ -154,7 +152,7 @@ how many years old a car is.
 
 ## EDA and Visualization
 
-The visualization are in the EDA notebooks. The plots are well documented in those files and will not be
+Visualization are in the EDA notebooks. The plots were well documented in those notebooks and will not be
 summarized here. Intuitively the plots indicate age, milage, make, and model are strong predictors of price. 
 The relationships between age and price, and milage and price, are somewhat linear but not quite, suggesting 
 polynomial features which was confirmed by the machine learning experiments. Price distribution plots indicate
@@ -200,7 +198,8 @@ max     65500.000000  100224.962135
 ```
 
 Variant experients with additional categorical features and grid search did not produce significantly 
-better results. The car model feature had a significant impact; the extensive data cleaning steps paid off.
+better results. The car model feature had a significant impact; the extensive data cleaning steps had an
+impact.
 
 ## Business recommendations
 
